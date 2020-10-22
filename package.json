@@ -1,0 +1,24 @@
+{
+  "name": "texteditor",
+  "version": "1.0.0",
+  "description": "Customizable text editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dzhagon/texteditor.git"
+  },
+  "keywords": [
+    "text",
+    "editor",
+    "js"
+  ],
+  "author": "Andrei Porskurin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dzhagon/texteditor/issues"
+  },
+  "homepage": "https://github.com/dzhagon/texteditor#readme"
+}
