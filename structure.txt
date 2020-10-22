@@ -1,6 +1,23 @@
 Text 
-  Preview
+  @load
+  @save
+  - Preview
     Rows
       Symbols
-  Edit
+  - Edit
     Cursor
+      position {
+        preview: { row, col }
+        text: { sentence_number }
+      }
+      @move
+        meta SHIFT
+        meta CTRL
+      @input
+      @erase
+        meta CTRL
+      @copy
+      @paste
+    Selection
+      @select_start
+      @select_end

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text editor</title>
+  <style>
+    @keyframes blinking { 
+      to {
+        visibility: hidden;
+      }
+    }
+
+    .cursor_blink {
+      animation:  blinking 1s steps(5, start) infinite;
+    }
+    #cursor {
+      display: inline-block;
+    }
+    #text {
+      font-variant: normal;
+      font-family: Serif, monospace;
+      font-stretch: normal;
+    }
+  </style>
+</head>
+<body>
+  <div id="texteditor">
+    <pre id="text"></pre>
+    <div id="cursor"><i class="cursor_blink">|</i></div>
+  </div>
+  <script src="index.js"></script>
+  
+</body>
+</html>
