@@ -4,32 +4,192 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Text editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    @keyframes blinking { 
-      to {
-        visibility: hidden;
-      }
+    * { box-sizing: border-box; font-family: 'Nunito', sans-serif;}
+    
+    .bar { 
+      width: 7rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 2rem;
+      padding:  1rem .5rem;
+    }
+    .bar button { 
+      width: 6rem;
+      margin-bottom: .5rem;
+    }
+    .texteditor {
+      line-height: 2rem;
+      margin-left: 7rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      height: 10rem;
+      border: 1px solid gray;
+    }
+    .texteditor:active, .texteditor:focus {
+      outline: none;
     }
 
-    .cursor_blink {
-      animation:  blinking 1s steps(5, start) infinite;
+    .where {
+      /* border: 2px dotted brown; */
+      position: relative;
+      padding-bottom: 8px;
+      border-bottom: 2px dotted #a54c2a;
     }
-    #cursor {
-      display: inline-block;
+    .where:hover {
+      background: #a54c2a2b;
     }
-    #text {
-      font-variant: normal;
-      font-family: Serif, monospace;
-      font-stretch: normal;
+    .where2::before {
+      content: ' ';
+      width: 100%;
+      bottom: -0.4rem;
+      left: 0;
+      position: absolute;
+      border-bottom: 2px dotted brown;
+    }
+    .when {
+      padding-bottom: 8px;
+      border-bottom: 1px solid orange;
+      /* background: linear-gradient(180deg, rgba(255,255,255,0) 50%, #ffa50075 100%); */
+    }
+    .when:hover {
+      background: #ffa50045
+      /* background: linear-gradient(180deg, #ffa50045 50%, #ffa50075 100%); */
+    }
+    .who {
+      padding: 0 3px 4px 3px;
+      border: 1px solid red;
+      border-radius: 1rem;
+    }
+    
+    .which {
+      padding-bottom: 2px;
+      border-bottom: 1px dashed red;
+    }
+    
+    .does {
+      padding-bottom: 4px;
+      border-bottom: 3px double blue;
+    }
+    
+    .how {
+      padding-bottom: 2px;
+      border-bottom: 1px dashed blue;
+    }
+
+    .what {
+      padding: 0 3px 4px 3px;
+      border: 1px solid green;
+      border-radius: 1rem;
+    }
+    .why {
+      padding-bottom: 6px;
+      border-bottom: 1px dashed green;
+    }
+    /* ------------------------------- */
+    button {
+      border: none;
+      background: none;
+      height: 2rem;
+      transform: translateY(-2px);
+      transition: background-color 140ms linear, color 140ms linear, transform 140ms linear;
+      cursor: pointer;
+      outline: none!important;
+    }
+    button:active {
+      filter: brightness(70%);
+    }
+    .btn-where {
+      color: black;
+      border: 1px solid #a54c2a;
+    }
+    .btn-where:hover {
+      color: white;
+      background: #a54c2a;
+    }
+
+    .btn-when {
+      color: black;
+      border: 1px solid orange;
+    }
+    .btn-when:hover {
+      color: black;
+      background: orange;
+    }
+
+    .btn-who {
+      color: black;
+      border: 1px solid red;
+      border-radius: 1rem;
+    }
+    .btn-who:hover {
+      color: white;
+      background: red;
+    }
+    .btn-which {
+      color: black;
+      border: 1px dashed red;
+    }
+    .btn-which:hover {
+      color: white;
+      background: red;
+    }
+    .btn-does {
+      border: 3px double blue;
+      
+    }
+    .btn-does:hover {
+      color: white;
+      background: blue;
+    }
+    .btn-how {
+      border: 1px dashed blue;
+    }
+    .btn-how:hover {
+      color: white;
+      background: blue;
+    }
+    .btn-what {
+      border: 1px solid green;
+      border-radius: 1rem;
+    }
+    .btn-what:hover {
+      color: white;
+      background: green;
+    }
+
+    .btn-why {
+      border: 1px dashed green;
+    }
+    .btn-why:hover {
+      color: white;
+      background: green;
     }
   </style>
 </head>
 <body>
-  <div id="texteditor">
-    <pre id="text"></pre>
-    <div id="cursor"><i class="cursor_blink">|</i></div>
+  <div class="bar">
+    <button class="btn-where" onclick="where()">% where %</button>
+    <button class="btn-when" onclick="when()"> * when *</button>
+    <hr>
+    <button class="btn-who" onclick="who()">- who -</button>
+    <button class="btn-which" onclick="which()">_ which _</button>
+    <hr>
+    <button class="btn-does" onclick="does()"> = does =</button>
+    <button class="btn-how" onclick="how()"> + how + </button>
+    <hr>
+    <button class="btn-what" onclick="what()">\ what \</button>
+    <button class="btn-why" onclick="why()">! why !</button>
   </div>
-  <script src="index.js"></script>
+  <div class="texteditor" contenteditable="true" spellcheck="false">
+    На сайте​ , после загрузки страницы ​ пользователь​ ​  гость​  пытается загрузить аплоад путём drag'n'drop картинки на сцену, чтобы иметь возможность редактировать её.
+  </div>
+  
+  
+<script src="index.js"></script>
   
 </body>
 </html>

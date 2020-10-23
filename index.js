@@ -1,94 +1,83 @@
-const $textEditor = document.querySelector('#texteditor')
-const $cursor = document.querySelector('#cursor')
-
-const $text = document.querySelector('#text')
-$text.insertAdjacentElement('beforeend', $cursor)
-
-const getTextNode = () => Array.prototype.filter.call($text.childNodes, child => child.nodeType === Node.TEXT_NODE)[0];
-
-const render = () => {
-  writeTextNode(model.text)
+function where () {
+  if (window.getSelection().focusNode.parentNode) console.log(window.getSelection().focusNode.parentNode)
+  document.execCommand('insertHTML', false, 
+    `<span class='where'>`
+    + document.getSelection()
+    +`&#8203;</span>&nbsp;`
+  );
+  // window.getSelection().focusNode.addClass('cursor_blink')
 }
 
+function when () {
+  if (window.getSelection().focusNode.parentNode) console.log(window.getSelection().focusNode.parentNode)
+  document.execCommand('insertHTML', false, 
+    `<span class='when'>`
+    + document.getSelection()
+    +`&#8203;</span>&nbsp;`
+  );
+  // window.getSelection().focusNode.addClass('cursor_blink')
+}
 
-const handlers = {
-  'Backspace': (ctrl, shift, alt) => {
-    const text = model.text
-    let sliceIndex = text.length-1
-    if (ctrl) {
-      sliceIndex = text.lastIndexOf(' ')
+function who () {
+  if (window.getSelection().focusNode.parentNode) console.log(window.getSelection().focusNode.parentNode)
+  document.execCommand('insertHTML', false, 
+    `<span class='who'>`
+    + document.getSelection()
+    +`&#8203;</span>&nbsp;`
+  );
+  // window.getSelection().focusNode.addClass('cursor_blink')
+}
 
-      console.log('CTRL', sliceIndex, text.length)
-      if (text[text.length - 2] === ' ') {
-        console.log('----------------------')
-        return model.text = text.replace(/\s{1,}$/smi, '')
-      }
-      if (sliceIndex === -1) sliceIndex = 0
+function which () {
+  if (window.getSelection().focusNode.parentNode) console.log(window.getSelection().focusNode.parentNode)
+  document.execCommand('insertHTML', false, 
+    `<span class='which'>`
+    + document.getSelection()
+    +`&#8203;</span>&nbsp;`
+  );
+}
+
+function why () {
+  if (window.getSelection().focusNode.parentNode) console.log(window.getSelection().focusNode.parentNode)
+  document.execCommand('insertHTML', false, 
+    `<span class='why'>`
+    + document.getSelection()
+    +`&#8203;</span>&nbsp;`
+  );
+}
+
+function does () {
+  if (window.getSelection().focusNode.parentNode) console.log(window.getSelection().focusNode.parentNode)
+  document.execCommand('insertHTML', false, 
+    `<span class='does'>`
+    + document.getSelection()
+    +`&#8203;</span>&nbsp;`
+  );
+}
+function how () {
+  if (window.getSelection().focusNode.parentNode) console.log(window.getSelection().focusNode.parentNode)
+  document.execCommand('insertHTML', false, 
+    `<span class='how'>`
+    + document.getSelection()
+    +`&#8203;</span>&nbsp;`
+  );
+}
+
+function what () {
+
+  if (window.getSelection().focusNode.parentNode) console.log(window.getSelection().focusNode.parentNode)
+  document.execCommand('insertHTML', false, 
+    `<span class='what'>`
+    + document.getSelection()
+    +`&#8203;</span>&nbsp;`
+  );
+}
+const editor = document.querySelector('.texteditor')
+editor.addEventListener('keydown', e => {
+  if (e.code === 'Enter') {
+    const parent = window.getSelection().focusNode.parentNode
+    if (parent !== editor) {
+      console.log('set selection after the node')
     }
-    model.text = text.slice(0, sliceIndex)
-  },
-  'ArrowUp': () => {
-
-  }, 
-  'ArrowDown': () => {
-
-  },
-  'ArrowLeft': () => {
-
-  },
-  'ArrowRight': () => {
-
-  },
-}
-
-const writeTextNode = (val) =>  {
-  $textNode = getTextNode()
-  if (!$textNode) {
-    $textNode = $text.insertAdjacentText('afterbegin', val)
-  } else {
-    $textNode.textContent = val
   }
-}
-const keypress = (e) => {
-  if (e.code in handlers) return
-  const s = e.key
-  model.text += s
-  model.cursor.col++
-  render()
-  console.log(model.text)
-}
-const keydown = (e) => {
-  if (e.code in handlers) {
-    if (e.ctrlKey ||  e.shiftKey ||  e.altKey) {
-      e.preventDefault()
-      e.stopPropagation()
-    }
-    handlers[e.code](e.ctrlKey, e.shiftKey, e.altKey)
-    
-    render()
-  }
-  console.log(e)
-
-}
-document.addEventListener('keypress', keypress)
-document.addEventListener('keydown', keydown)
-
-
-const model = {
-  text: '',
-  
-  rows: [],
-  charsInRow: 150,
-  cursor: {
-    row: 0, col: 0
-  }
-}
-
-
-const textEditor =  {
-  // case 1: type something in a row, when its become more than 150 increase row count
-  // case 2: blinking cursor
-  load() {
-    return {}
-  }
-}
+})
