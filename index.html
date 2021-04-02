@@ -29,8 +29,19 @@
       height: 10rem;
       border: 1px solid gray;
     }
+    
     .texteditor:active, .texteditor:focus {
       outline: none;
+    }
+
+    .preview {
+      line-height: 2rem;
+      margin-left: 7rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      height: 100%;
+      
     }
 
     .where {
@@ -64,7 +75,13 @@
       border: 1px solid red;
       border-radius: 1rem;
     }
-    
+    .lemma {
+      position: relative;
+    }
+    .lemma:hover {
+      color: red;
+      background: rgb(255, 255, 170)
+    }
     .which {
       padding-bottom: 2px;
       border-bottom: 1px dashed red;
@@ -172,22 +189,23 @@
 </head>
 <body>
   <div class="bar">
-    <button class="btn-where" onclick="where()">% where %</button>
-    <button class="btn-when" onclick="when()"> * when *</button>
+    <button class="btn-where" onclick="actions.run(event, 'where')">% where %</button>
+    <button class="btn-when" onclick="actions.run(event, 'when')"> * when *</button>
     <hr>
-    <button class="btn-who" onclick="who()">- who -</button>
-    <button class="btn-which" onclick="which()">_ which _</button>
+    <button class="btn-who" onclick="actions.run(event, 'who')">- who -</button>
+    <button class="btn-which" onclick="actions.run(event, 'which')">_ which _</button>
     <hr>
-    <button class="btn-does" onclick="does()"> = does =</button>
-    <button class="btn-how" onclick="how()"> + how + </button>
+    <button class="btn-does" onclick="actions.run(event, 'does')"> = does =</button>
+    <button class="btn-how" onclick="actions.run(event, 'how')"> + how + </button>
     <hr>
-    <button class="btn-what" onclick="what()">\ what \</button>
-    <button class="btn-why" onclick="why()">! why !</button>
+    <button class="btn-what" onclick="actions.run(event, 'what')">\ what \</button>
+    <button class="btn-why" onclick="actions.run(event, 'why')">! why !</button>
   </div>
+  <small style="position: absolute; left: 136px; top:0; color: grey;">кто делает что</small>
   <div class="texteditor" contenteditable="true" spellcheck="false">
-    На сайте​ , после загрузки страницы ​ пользователь​ ​  гость​  пытается загрузить аплоад путём drag'n'drop картинки на сцену, чтобы иметь возможность редактировать её.
+    
   </div>
-  
+  <div class="preview"></div>
   
 <script src="index.js"></script>
   
